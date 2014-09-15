@@ -1,0 +1,28 @@
+extends layout
+
+block content
+	h1= headline
+	a(href="/newsubscription")= "Add Subscription"
+	h2= subscriptionTableTitle
+	table
+		thead
+			tr
+				td Name
+				td Namespace
+				td Operation
+				td Callback Host
+				td Callback Port
+				td Callback Path
+				td Callback Method
+				td Active
+		tbody
+			each item in subscriptions
+				tr
+					td #{item.name}
+					td #{item.ns}
+					td #{item.op}
+					td #{item.cb.host}
+					td #{item.cb.port}
+					td #{item.cb.path}
+					td #{item.cb.method}
+					td #{item.active}

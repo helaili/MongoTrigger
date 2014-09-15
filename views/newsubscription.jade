@@ -1,0 +1,19 @@
+extends layout
+
+block content
+	h1= headline
+	form#formAddSubscription(name="addSubscription",method="post",action="/addsubscription")
+		input#inputSubscriptionName(type="text", placeholder="Subscription name", name="name")
+		select(name="ns")
+				each item in namespaces
+					option(value=item) #{item}
+		select(name="op")
+				each item in operationTypes
+					option(value=item.value) #{item.label}
+		input#inputCallbackServiceHost(type="text", placeholder="Callback service host", name="cb[host]")
+		input#inputCallbackServicePort(type="text", placeholder="Callback service port", name="cb[port]")
+		input#inputCallbackServicePath(type="text", placeholder="Callback service path", name="cb[path]")
+		select(name="cb[method]")
+			option(value="GET") GET
+			option(value="POST") POST
+		button#btnSubmit(type="submit") Add Subscription
